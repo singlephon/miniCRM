@@ -6,15 +6,14 @@ use App\Models\Ticket;
 use App\Repositories\CustomerRepository;
 use App\Repositories\TicketRepository;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 
 class TicketService extends Service
 {
-
     public function __construct(
         public CustomerRepository $customerRepository,
         public TicketRepository $ticketRepository,
-    ) {}
+    ) {
+    }
 
     /**
      * @throws \Exception
