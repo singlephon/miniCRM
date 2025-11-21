@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Customer;
 use App\Models\User;
+use Database\Factories\TicketFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,11 +17,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        if (! User::where('email', 'admin@minicrm.com')->exists()) {
+            User::factory()->create([
+                'name' => 'Admin',
+                'email' => 'admin@minicrm.com',
+                'password' => bcrypt('password'),
+            ]);
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        Customer::factory(10)->create();
+        TicketFactory::times(10)->create();
     }
 }
