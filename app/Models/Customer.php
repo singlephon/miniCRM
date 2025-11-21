@@ -9,6 +9,12 @@ class Customer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+    ];
+
     public function setPhoneAttribute($value): void
     {
         $this->attributes['phone'] = preg_replace('/[^0-9+]/', '', $value);

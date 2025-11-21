@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        Customer::factory(10)->create();
-        TicketFactory::times(10)->create();
+        Customer::factory(3)->create();
+        TicketFactory::times(5)->create();
     }
 }
