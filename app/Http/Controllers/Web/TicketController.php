@@ -12,7 +12,7 @@ class TicketController
     public function index(Request $request)
     {
         $tickets = TicketService::make()
-            ->list($request->all());
+            ->list(filters: $request->all());
 
         return view('tickets.index', compact('tickets'));
     }
@@ -25,7 +25,10 @@ class TicketController
     public function update(UpdateTicketStatusRequest $request, Ticket $ticket)
     {
         TicketService::make()
-            ->updateStatus($ticket, $request->status);
+            ->updateStatus(
+                ticket: $ticket,
+                newStatus: $request->status
+            );
 
         return back()->with('success', 'Status updated!');
     }

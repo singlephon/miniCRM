@@ -51,6 +51,8 @@ class CreateTicketRequest extends FormRequest
             'email' => ['required', 'email'],
             'subject' => ['required', 'string', 'min:4', 'max:255'],
             'description' => ['required', 'string'],
+
+            'attachment' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf,doc,docx', 'max:10240'],
         ];
     }
 

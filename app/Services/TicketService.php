@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Ticket;
 use App\Repositories\CustomerRepository;
 use App\Repositories\TicketRepository;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
 
@@ -25,6 +26,7 @@ class TicketService extends Service
         string $email,
         string $subject,
         string $description,
+        ?UploadedFile $attachment = null
     ): array {
         $customer = $this->customerRepository->findOrCreate(
             name: $name,
@@ -38,7 +40,11 @@ class TicketService extends Service
             description: $description
         );
 
-        return $ticket->toArray();
+        if ($attachment) {
+            $ticket->addMedia($attachment)->toMediaCollection('attachments');
+        }
+
+        return $ticket->load('media')->toArray();
     }
 
     public function stats(): array

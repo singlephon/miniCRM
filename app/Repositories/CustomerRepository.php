@@ -15,18 +15,18 @@ class CustomerRepository
         $customerByPhone = Customer::where('phone', $phone)->first();
         $customerByEmail = Customer::where('email', $email)->first();
 
-        if (($customerByPhone or $customerByEmail) and ($customerByPhone?->id !== $customerByEmail?->id)) {
-            throw new Exception("Data collision: Phone number or email already used with another customer");
+        if (!$customerByPhone and !$customerByEmail) {
+            return Customer::create([
+                'name' => $name,
+                'phone' => $phone,
+                'email' => $email,
+            ]);
         }
 
-        if ($customerByPhone->id == $customerByEmail->id) {
-            return $customerByEmail;
+        if (($customerByPhone and $customerByEmail) and $customerByPhone->is($customerByEmail)) {
+            return $customerByPhone;
         }
 
-        return Customer::create([
-            'name' => $name,
-            'phone' => $phone,
-            'email' => $email,
-        ]);
+        throw new Exception("Phone number or email already used with another customer");
     }
 }
