@@ -19,6 +19,7 @@ class Ticket extends Model implements HasMedia
         'subject',
         'description',
         'customer_id',
+        'status'
     ];
 
     public function customer(): BelongsTo
