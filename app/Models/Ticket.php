@@ -20,6 +20,7 @@ class Ticket extends Model implements HasMedia
         'description',
         'customer_id',
         'status',
+        'closed_at'
     ];
 
     protected function casts(): array

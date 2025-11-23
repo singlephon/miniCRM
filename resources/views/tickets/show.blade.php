@@ -34,7 +34,7 @@
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Status</h3>
                         <div>
                             <span class="text-xs text-gray-500 uppercase">Closed at</span>
-                            <div>{{ $ticket->closed_at->format('d.m.Y H:i') }}</div>
+                            <div>{{ $ticket->closed_at?->format('d.m.Y H:i') }}</div>
                         </div>
                     </div>
                 @else

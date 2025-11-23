@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Widget</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-transparent p-4">
 
-<div id="widget-container" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6">
+<div id="widget-container" class="max-w-md mx-auto mt-5 bg-white shadow-lg rounded-lg p-6">
 
     <div id="success-message" class="hidden text-center py-10">
         <div class="text-green-500 text-5xl mb-4">✓</div>
