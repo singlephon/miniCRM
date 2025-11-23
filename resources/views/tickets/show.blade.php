@@ -4,7 +4,11 @@
 
             <div class="md:col-span-2 space-y-6">
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <h2 class="text-2xl font-bold mb-4">{{ $ticket->subject }}</h2>
+                    <div class="flex justify-between">
+                        <h2 class="text-2xl font-bold mb-4">{{ $ticket->subject }}</h2>
+                        @if($ticket->status == 'closed') <span class="text-green-700 text-lg">Closed</span> @endif
+                    </div>
+
                     <p class="text-gray-700 whitespace-pre-wrap">{{ $ticket->description }}</p>
 
                     @if($ticket->getMedia('attachments')->count() > 0)
@@ -28,6 +32,9 @@
 
             <div class="space-y-6">
 
+                @if($ticket->status == 'closed')
+
+                @else
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Actions</h3>
                     <form action="{{ route('tickets.update', $ticket) }}" method="POST">
@@ -41,11 +48,13 @@
                             <option value="closed" @selected($ticket->status == 'closed')>Closed</option>
                         </select>
 
+
                         <button type="submit" class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
                             Update status
                         </button>
                     </form>
                 </div>
+                @endif
 
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Customer</h3>
