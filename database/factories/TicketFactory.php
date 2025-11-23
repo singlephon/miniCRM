@@ -21,8 +21,8 @@ class TicketFactory extends Factory
             'description' => $this->faker->text(),
             'status' => $status,
             'closed_at' => $closedAt,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => Carbon::now()->subDays(rand(30, 60)),
+            'updated_at' => $closedAt,
 
             'customer_id' => Customer::factory(),
         ];

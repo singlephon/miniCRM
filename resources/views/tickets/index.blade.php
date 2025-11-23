@@ -28,7 +28,7 @@
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
 
-                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                    <button type="submit" class="bg-none border-0 cursor-pointer">
                         Submit
                     </button>
 
@@ -56,6 +56,7 @@
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">{{ $ticket->customer->name }}</div>
                                 <div class="text-sm text-gray-500">{{ $ticket->customer->email }}</div>
+                                <div class="text-sm text-gray-700">{{ $ticket->customer->phone }}</div>
                             </td>
                             <td class="px-6 py-4">
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full

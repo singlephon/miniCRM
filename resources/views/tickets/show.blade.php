@@ -4,11 +4,8 @@
 
             <div class="md:col-span-2 space-y-6">
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <div class="flex justify-between">
-                        <h2 class="text-2xl font-bold mb-4">{{ $ticket->subject }}</h2>
-                        @if($ticket->status == 'closed') <span class="text-green-700 text-lg">Closed</span> @endif
-                    </div>
 
+                    <h2 class="text-2xl font-bold mb-4">{{ $ticket->subject }}</h2>
                     <p class="text-gray-700 whitespace-pre-wrap">{{ $ticket->description }}</p>
 
                     @if($ticket->getMedia('attachments')->count() > 0)
@@ -33,7 +30,13 @@
             <div class="space-y-6">
 
                 @if($ticket->status == 'closed')
-
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Status</h3>
+                        <div>
+                            <span class="text-xs text-gray-500 uppercase">Closed at</span>
+                            <div>{{ $ticket->closed_at->format('d.m.Y H:i') }}</div>
+                        </div>
+                    </div>
                 @else
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Actions</h3>
@@ -70,6 +73,10 @@
                         <div>
                             <span class="text-xs text-gray-500 uppercase">Phone</span>
                             <div>{{ $ticket->customer->phone }}</div>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-500 uppercase">Created at</span>
+                            <div>{{ $ticket->created_at->format('d.m.Y H:i') }}</div>
                         </div>
                     </div>
                 </div>

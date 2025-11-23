@@ -11,7 +11,7 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="antialiased bg-slate-900 text-white overflow-hidden selection:bg-emerald-500 selection:text-white">
+<body class="antialiased bg-slate-900 text-white selection:bg-emerald-500 selection:text-white">
 
 <div class="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
 
@@ -32,9 +32,8 @@
             </p>
         </div>
 
-        <div class="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden transition-transform hover:scale-[1.01] duration-500 ease-out">
-
-            <div class="w-full h-[650px] bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-y-auto">
+        <div class="w-full rounded-2xl shadow-2xl overflow-hidden transition-transform hover:scale-[1.01] duration-500 ease-out">
+            <div class="w-full h-[650px] rounded-2xl shadow-2xl overflow-y-auto">
                 <iframe
                     src="{{ route('widget.show') }}"
                     class="w-full h-full border-none"

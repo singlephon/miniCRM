@@ -22,6 +22,13 @@ class Ticket extends Model implements HasMedia
         'status'
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'closed_at' => 'datetime',
+        ];
+    }
+
     public function customer(): BelongsTo
     {
         return $this->belongsTo(
