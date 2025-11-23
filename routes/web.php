@@ -12,3 +12,5 @@ Route::resource('tickets', Web\TicketController::class)
 
 Route::get('download/{media}', [Web\MediaController::class, 'download'])->name('download.media');
 //});
+
+Route::view('/', 'welcome')->name('welcome');
