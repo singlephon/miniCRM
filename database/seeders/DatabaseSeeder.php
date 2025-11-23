@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
 
     /**
      * Seed the application's database.
+     *
      * @throws BindingResolutionException
      */
     public function run(): void

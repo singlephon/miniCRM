@@ -9,13 +9,12 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
 
-class TicketService extends Service
+class TicketService
 {
     public function __construct(
         public CustomerRepository $customerRepository,
         public TicketRepository $ticketRepository,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws \Exception
@@ -57,7 +56,6 @@ class TicketService extends Service
             'month' => Ticket::createdSince($now->clone()->subMonth())->count(),
         ];
     }
-
 
     public function list(array $filters): LengthAwarePaginator
     {

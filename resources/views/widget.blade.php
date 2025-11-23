@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Widget</title>
-    <script src="https://cdn.tailwindcss.com"></script> </head>
+</head>
 <body class="bg-transparent p-4">
 
 <div id="widget-container" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6">

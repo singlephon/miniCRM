@@ -20,15 +20,15 @@ class TicketRepository
     {
         $query = Ticket::with('customer')->latest();
 
-        if (!empty($filters['status'])) {
+        if (! empty($filters['status'])) {
             $query->where('status', $filters['status']);
         }
 
-        if (!empty($filters['date'])) {
+        if (! empty($filters['date'])) {
             $query->whereDate('created_at', $filters['date']);
         }
 
-        if (!empty($filters['search'])) {
+        if (! empty($filters['search'])) {
             $search = $filters['search'];
             $query->whereHas('customer', function ($q) use ($search) {
                 $q->where('email', 'like', "%{$search}%")

@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Requests\LoginRequest;
 use App\Services\AuthService;
-use Illuminate\Http\Request;
 
 class AuthController
 {
+    public function __construct(
+        public AuthService $authService
+    ) {}
+
     public function login(LoginRequest $request)
     {
-        AuthService::make()->login(
+        $this->authService->login(
             email: $request->email,
             password: $request->password
         );
@@ -20,7 +23,8 @@ class AuthController
 
     public function logout()
     {
-        AuthService::make()->logout();
+        $this->authService->logout();
+
         return redirect()->route('login');
     }
 }

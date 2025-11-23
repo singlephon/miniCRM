@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 
 class TicketController
 {
+    public function __construct(
+        public TicketService $ticketService
+    ) {}
+
     public function index(Request $request)
     {
-        $tickets = TicketService::make()
+        $tickets = $this->ticketService
             ->list(filters: $request->all());
 
         return view('tickets.index', compact('tickets'));
@@ -24,7 +28,7 @@ class TicketController
 
     public function update(UpdateTicketStatusRequest $request, Ticket $ticket)
     {
-        TicketService::make()
+        $this->ticketService
             ->updateStatus(
                 ticket: $ticket,
                 newStatus: $request->status

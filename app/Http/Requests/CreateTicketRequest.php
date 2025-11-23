@@ -28,11 +28,11 @@ class CreateTicketRequest extends FormRequest
         $phone = preg_replace('/[^0-9+]/', '', $phone);
 
         if (str_starts_with($phone, '8') && strlen($phone) === 11) {
-            return '+7' . substr($phone, 1);
+            return '+7'.substr($phone, 1);
         }
 
-        if (!str_starts_with($phone, '+')) {
-            return '+' . $phone;
+        if (! str_starts_with($phone, '+')) {
+            return '+'.$phone;
         }
 
         return $phone;

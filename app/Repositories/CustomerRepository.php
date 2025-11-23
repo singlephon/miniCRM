@@ -15,7 +15,7 @@ class CustomerRepository
         $customerByPhone = Customer::where('phone', $phone)->first();
         $customerByEmail = Customer::where('email', $email)->first();
 
-        if (!$customerByPhone and !$customerByEmail) {
+        if (! $customerByPhone and ! $customerByEmail) {
             return Customer::create([
                 'name' => $name,
                 'phone' => $phone,
@@ -27,6 +27,6 @@ class CustomerRepository
             return $customerByPhone;
         }
 
-        throw new Exception("Phone number or email already used with another customer");
+        throw new Exception('Phone number or email already used with another customer');
     }
 }

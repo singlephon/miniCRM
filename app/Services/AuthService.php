@@ -3,12 +3,11 @@
 namespace App\Services;
 
 use App\Repositories\AuthRepository;
-use App\Services\Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
-class AuthService extends Service
+class AuthService
 {
     public function __construct(
         protected AuthRepository $authRepository

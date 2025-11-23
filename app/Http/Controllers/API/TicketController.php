@@ -8,10 +8,14 @@ use Exception;
 
 class TicketController
 {
+    public function __construct(
+        public TicketService $ticketService
+    ) {}
+
     public function statistics()
     {
         try {
-            $tickets = TicketService::make()
+            $tickets = $this->ticketService
                 ->stats();
 
         } catch (Exception $exception) {
@@ -21,14 +25,14 @@ class TicketController
         }
 
         return response()->json([
-            'tickets' => $tickets
+            'tickets' => $tickets,
         ]);
     }
 
     public function store(CreateTicketRequest $request)
     {
         try {
-            $ticket = TicketService::make()
+            $ticket = $this->ticketService
                 ->create(...$request->toArray());
 
         } catch (Exception $exception) {
@@ -39,7 +43,7 @@ class TicketController
 
         return response()->json([
             'message' => 'Created successfully',
-            'ticket' => $ticket
+            'ticket' => $ticket,
         ]);
     }
 }

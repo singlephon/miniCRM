@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web;
+use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('welcome');
 
@@ -19,4 +19,3 @@ Route::middleware(['auth', 'role:admin|manager'])->group(function () {
 
     Route::get('download/{media}', [Web\MediaController::class, 'download'])->name('download.media');
 });
-
